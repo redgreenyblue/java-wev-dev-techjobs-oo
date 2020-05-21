@@ -84,13 +84,16 @@ public class Job {
         return id;
     }
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+    @Override
+    public String toString() {
+        if(name.isEmpty() && getEmployer().getValue().isEmpty() && getLocation().getValue().isEmpty() && getPositionType().getValue().isEmpty() && getCoreCompetency().getValue().isEmpty()) {
+            return "OOPS! This job does not seem to exist.";
+        }
+        if(name.isEmpty()) name = "Data not available";
+        if(getEmployer().getValue().isEmpty()) employer.setValue("Data not available");
+        if(getLocation().getValue().isEmpty()) location.setValue("Data not available");
+        if(getPositionType().getValue().isEmpty()) positionType.setValue("Data not available");
+        if(getCoreCompetency().getValue().isEmpty()) coreCompetency.setValue("Data not available");
+            return "\n" + "ID:  " + id + "\n" + "Name:  " + name + "\n" + "Employer:  " + employer + "\n" + "Location:  " + location + "\n" + "Position Type:  " + positionType + "\n" + "Core Competency:  " + coreCompetency + "\n";
+    }
 }
